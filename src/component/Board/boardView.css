@@ -1,0 +1,7 @@
+.board9 {
+  display: grid;
+  max-width: 500px;
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+}

@@ -1,0 +1,9 @@
+.cell {
+  width: 100%;
+  /* min-height: 40px; */
+  padding-top: 100%;
+}
+
+.close {
+  background-color: #636060;
+}

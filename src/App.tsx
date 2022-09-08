@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Board from './models/Board';
+import Board from './component/Board';
+import Game from './models/Game';
 
 function App() {
-  const [game, setGame] = useState<Board>();
+  const [game, setGame] = useState<Game>();
 
   useEffect(() => {
-    const locGame = new Board(9, 9, 9)
+    const locGame = new Game(9, 9, 9);
     locGame.init();
-    setGame(prev => locGame);
-    
-  },[])
+    setGame((prev) => locGame);
+  }, []);
 
   useEffect(() => {
-    console.log('game',game?.board);
-  },[game])
+    // console.log('game', game?.board);
+  }, [game]);
 
   return (
     <div className="App">
-     Sapper
+      <Board />
     </div>
   );
 }
