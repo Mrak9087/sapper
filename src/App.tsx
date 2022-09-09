@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Board from './component/Board';
+import BoardView from './component/Board';
 import Game from './models/Game';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Board />
+      <BoardView />
     </div>
   );
 }

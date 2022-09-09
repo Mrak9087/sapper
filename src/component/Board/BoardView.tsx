@@ -21,7 +21,14 @@ const BoardView = () => {
 
   const cellClick = useCallback(
     (cell: Cell) => {
-      setCells((prev) => [...(game?.clearCell(cell.x, cell.y) || [])]);
+      setCells([...(game?.clearCell(cell.x, cell.y) || [])]);
+    },
+    [game]
+  );
+
+  const changeState = useCallback(
+    (cell: Cell) => {
+      setCells([...(game?.changeStateCell(cell.x, cell.y) || [])]);
     },
     [game]
   );
@@ -29,7 +36,9 @@ const BoardView = () => {
   return (
     <div className="board9">
       {cells?.map((item, index) => {
-        return <CellView key={index} pCell={item} clickCell={cellClick} />;
+        return (
+          <CellView key={index} pCell={item} clickCell={cellClick} changeState={changeState} />
+        );
       })}
     </div>
   );

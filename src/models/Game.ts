@@ -30,34 +30,33 @@ class Game {
         locCell.stateCell = Mask.OPEN;
         if (locCell.value !== 0) continue;
       }
-      // else continue;
-      // if (locCell.value !== 0) continue;
+
       this.clearing(locCell.x, locCell.y);
-      // this.clearing(locCell.x + 1, locCell.y);
-      // this.clearing(locCell.x, locCell.y - 1);
-      // this.clearing(locCell.x, locCell.y + 1);
     }
     return this.cells;
   }
 
+  changeStateCell(x: number, y: number): Cell[] {
+    let locCell = this.cells.find((item) => {
+      if (item.x === x && item.y === y) {
+        return item;
+      }
+    });
+
+    locCell?.changeState();
+
+    return this.cells;
+  }
+
   private clearing(x: number, y: number) {
-    // if (x >= 0 && y >= 0 && x < this.board.lengthX && y < this.board.lengthY) {
-    //   let locCell = this.cells.find((item) => {
-    //     if (item.x === x && item.y === y) {
-    //       return item;
-    //     }
-    //   });
-    //   if (!locCell || locCell.stateCell === Mask.OPEN) return;
-    //   this.clearCells.push(locCell);
-    // }
     let targetCell = this.cells.find((item) => {
       if (item.x === x && item.y === y) {
         return item;
       }
     });
     if (targetCell?.value === 0) {
-      for (let i = -1; i < 2; i ++) {
-        for (let j = -1; j < 2; j ++) {
+      for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
           if (
             y + i >= 0 &&
             x + j >= 0 &&
@@ -69,7 +68,7 @@ class Game {
                 return item;
               }
             });
-            if (locCell?.x === targetCell.x && locCell?.y === targetCell.y ) continue
+            if (locCell?.x === targetCell.x && locCell?.y === targetCell.y) continue;
             if (!locCell || locCell.stateCell === Mask.OPEN) continue;
             this.clearCells.push(locCell);
           }
