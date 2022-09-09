@@ -1,4 +1,4 @@
-import { Mask } from '../helpers/constants';
+import { BOMB, Mask } from '../helpers/constants';
 import Board from './Board';
 import Cell from './Cell';
 
@@ -8,7 +8,7 @@ class Game {
   private clearCells: Cell[] = [];
 
   constructor(lengthX: number, lengthY: number, countBomb: number) {
-    this.board = new Board(lengthX, lengthY, countBomb);
+    this.board = new Board(countBomb, lengthX, lengthY);
   }
 
   init() {
@@ -28,6 +28,12 @@ class Game {
       if (locCell) {
         if (locCell.stateCell === Mask.OPEN) continue;
         locCell.stateCell = Mask.OPEN;
+        if (locCell.value === BOMB) {
+          this.cells.forEach((item) => {
+            item.stateCell = Mask.OPEN;
+          })
+          break;
+        }
         if (locCell.value !== 0) continue;
       }
 

@@ -1,0 +1,11 @@
+.gameView {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-image: linear-gradient(90deg, #5ac3f3, #b5fce7 , #5ac3f3 ); */
+  background-image: radial-gradient(#b5fce7,#5ac3f3);
+}
+

@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'EternalUi';
+  src: url('./access/fonts/EternalUiBold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'VenomMincho';
+    src: url('./access/fonts/VenomMincho.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
