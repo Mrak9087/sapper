@@ -1,6 +1,6 @@
 .board {
   display: grid;
-  max-width: 500px;
+  max-width: calc(var(--w) * 1px);
   width: 100%;
   background: linear-gradient(#7974b9 0%, #5497e4 100%);
   font-family: VenomMincho;
@@ -13,8 +13,23 @@
     2px -2px 0 rgb(0, 0, 0), -2px 2px 0 rgb(0, 0, 0), -2px -2px 0 rgb(0, 0, 0);
   border: 10px ridge #4d85ec;
   padding: 1px;
+  user-select: none;
 }
+
 .board9 {
-  grid-template-rows: repeat(9, 1fr);
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(var(--ly), 1fr);
+  grid-template-columns: repeat(var(--lx), 1fr);
+}
+
+.counter{
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: Ramadhanfest;
+  font-size: 32px;
+  font-weight: bold;
+  color: #544d97;
+  letter-spacing: 5px;
 }

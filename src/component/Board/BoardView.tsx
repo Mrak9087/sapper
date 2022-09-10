@@ -8,19 +8,14 @@ import './boardView.css';
 
 interface IBoard {
   propGame: Game;
+  boardWidth: number;
   handleWin: () => void;
   handleLose: () => void;
 }
 
-const BoardView: FC<IBoard> = ({ propGame, handleWin, handleLose }) => {
+const BoardView: FC<IBoard> = ({ propGame, boardWidth, handleWin, handleLose }) => {
   const [game, setGame] = useState<Game>(propGame);
   const [cells, setCells] = useState<Cell[]>(propGame.cells);
-
-  // useEffect(() => {
-  //   const locGame = new Game(9, 9, 10);
-  //   locGame.init();
-  //   setGame(locGame);
-  // }, []);
 
   const win = useMemo(() => {
     const rightFlags = cells?.filter((item) => item.value === BOMB && item.stateCell === Mask.FLAG);
@@ -36,7 +31,17 @@ const BoardView: FC<IBoard> = ({ propGame, handleWin, handleLose }) => {
     return isRightFlag && isOpened;
   }, [cells]);
 
-  useEffect(() => { 
+  const countFlag: number = useMemo(() => {
+    const cFlag = cells.reduce((count, item) => {
+      if (item.stateCell === Mask.FLAG) {
+        count++;
+      }
+      return count;
+    }, 0);
+    return game.board.countBomb - cFlag;
+  }, [cells]);
+
+  useEffect(() => {
     setGame(propGame);
     setCells(propGame.cells);
   }, [propGame]);
@@ -65,13 +70,25 @@ const BoardView: FC<IBoard> = ({ propGame, handleWin, handleLose }) => {
   );
 
   return (
-    <div className="board board9">
-      {cells?.map((item, index) => {
-        return (
-          <CellView key={index} pCell={item} clickCell={cellClick} changeState={changeState} />
-        );
-      })}
-    </div>
+    <>
+      <div className="counter">{countFlag}</div>
+      <div
+        className="board board9"
+        style={
+          {
+            '--w': boardWidth,
+            '--lx': game.board.lengthX,
+            '--ly': game.board.lengthY,
+          } as React.CSSProperties
+        }
+      >
+        {cells?.map((item, index) => {
+          return (
+            <CellView key={index} pCell={item} clickCell={cellClick} changeState={changeState} />
+          );
+        })}
+      </div>
+    </>
   );
 };
 

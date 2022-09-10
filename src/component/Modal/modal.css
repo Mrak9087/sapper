@@ -6,8 +6,9 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: rgba(24, 173, 231, 0.8);
+  padding-top: 50px;
+  align-items: flex-start;
+  background-color: rgba(24, 173, 231, 0.5);
   pointer-events: none;
   transform: scale(0, 0);
   transition: all 0.5s linear;

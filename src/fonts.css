@@ -6,8 +6,15 @@
 }
 
 @font-face {
-    font-family: 'VenomMincho';
-    src: url('./access/fonts/VenomMincho.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'VenomMincho';
+  src: url('./access/fonts/VenomMincho.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ramadhanfest';
+  src: url('./access/fonts/Ramadhanfest.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
