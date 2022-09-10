@@ -13,6 +13,7 @@ class Board {
   }
 
   private clearBoard() {
+    this.board = [];
     for (let y = 0; y < this.lengthY; y++) {
       this.board[y] = new Array(this.lengthX).fill(0);
     }

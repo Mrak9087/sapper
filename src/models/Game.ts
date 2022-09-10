@@ -13,6 +13,7 @@ class Game {
 
   init() {
     this.board.init();
+    this.cells = [];
     for (let y = 0; y < this.board.lengthY; y++) {
       for (let x = 0; x < this.board.lengthX; x++) {
         this.cells.push(new Cell(x, y, this.board.board[y][x]));
