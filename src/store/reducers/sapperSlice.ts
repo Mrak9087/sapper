@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ISapperStore {
+export interface ISapperStore {
   lengthX: number;
   lengthY: number;
   countBomb: number;
@@ -23,6 +23,7 @@ const sapperSlice = createSlice({
       state.lengthX = action.payload.lengthX;
       state.lengthY = action.payload.lengthY;
       state.countBomb = action.payload.countBomb;
+      state.widthBoard = action.payload.widthBoard;
     },
   },
 });

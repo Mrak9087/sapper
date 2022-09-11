@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  background-image: radial-gradient(#b5fce7,#5ac3f3);
 }
 
 .App-logo {

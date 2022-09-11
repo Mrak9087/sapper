@@ -14,7 +14,7 @@ const GameView = () => {
 
   useEffect(() => {
     newGame();
-  }, []);
+  }, [store.countBomb]);
 
   const newGame = () => {
     const locGame = new Game(store.lengthX, store.lengthY, store.countBomb);
@@ -31,9 +31,9 @@ const GameView = () => {
   };
 
   const closeModal = () => {
-    newGame();
     setIsLose(false);
     setIsWin(false);
+    newGame();
   };
 
   const getTextModal = (): string => {

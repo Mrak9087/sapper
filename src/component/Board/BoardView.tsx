@@ -15,7 +15,7 @@ interface IBoard {
 
 const BoardView: FC<IBoard> = ({ propGame, boardWidth, handleWin, handleLose }) => {
   const [game, setGame] = useState<Game>(propGame);
-  const [cells, setCells] = useState<Cell[]>(propGame.cells);
+  const [cells, setCells] = useState<Cell[]>([]);
 
   const win = useMemo(() => {
     const rightFlags = cells?.filter((item) => item.value === BOMB && item.stateCell === Mask.FLAG);

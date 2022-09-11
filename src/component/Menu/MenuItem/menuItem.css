@@ -1,0 +1,10 @@
+.menuItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+  font-family: VenomMincho;
+  color: #3cf54b;
+  cursor: pointer;
+}
