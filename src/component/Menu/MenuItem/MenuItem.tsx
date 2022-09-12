@@ -14,12 +14,23 @@ const MenuItem: FC<IMenuItem> = ({ text, level }) => {
   const store = useSelector((state: RootStore) => state);
   const dispatch = useDispatch<AppDispatch>();
 
+  let cl = '';
+
   const handleClick = () => {
     dispatch(setLevel(level));
-    console.log(level);
   };
+
+  if (
+    level.countBomb === store.countBomb &&
+    level.lengthX === store.lengthX &&
+    level.lengthY === store.lengthY &&
+    level.widthBoard === store.widthBoard
+  ) {
+    cl = 'activeItem';
+  }
+
   return (
-    <div onClick={handleClick} className="menuItem">
+    <div onClick={handleClick} className={`menuItem ${cl}`}>
       {text}
     </div>
   );
