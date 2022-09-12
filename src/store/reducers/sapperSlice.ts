@@ -12,7 +12,6 @@ const sapperDefault: ISapperStore = {
   lengthY: 9,
   countBomb: 10,
   widthBoard: 500,
-  // 500,
 };
 
 const sapperSlice = createSlice({

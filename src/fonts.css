@@ -18,3 +18,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'BoncegroFF4F';
+  src: url('./access/fonts/BoncegroFF4F.otf');
+  font-weight: normal;
+  font-style: normal;
+}
