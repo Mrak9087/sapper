@@ -42,9 +42,14 @@ const BoardView: FC<IBoard> = ({ propGame, boardWidth, handleWin, handleLose }) 
   }, [cells]);
 
   useEffect(() => {
+    propGame.init();
     setGame(propGame);
-    setCells(propGame.cells);
   }, [propGame]);
+
+  useEffect(() => {
+    setCells([]);
+    setCells(game.cells);
+  }, [game]);
 
   useEffect(() => {
     if (win) {
@@ -59,35 +64,46 @@ const BoardView: FC<IBoard> = ({ propGame, boardWidth, handleWin, handleLose }) 
         handleLose();
       }
     },
-    [propGame]
+    [propGame,game]
   );
 
   const changeState = useCallback(
     (cell: Cell) => {
       setCells([...(game?.changeStateCell(cell.x, cell.y) || [])]);
     },
-    [propGame]
+    [propGame,game]
   );
 
   return (
     <>
-      <div className="counter">{countFlag}</div>
-      <div
-        className="board board9"
-        style={
-          {
-            '--w': boardWidth,
-            '--lx': game.board.lengthX,
-            '--ly': game.board.lengthY,
-          } as React.CSSProperties
-        }
-      >
-        {cells?.map((item, index) => {
-          return (
-            <CellView key={index} pCell={item} clickCell={cellClick} changeState={changeState} />
-          );
-        })}
-      </div>
+      {game ? (
+        <>
+          <div className="counter">{countFlag}</div>
+          <div
+            className="board board9"
+            style={
+              {
+                '--w': boardWidth,
+                '--lx': game.board.lengthX,
+                '--ly': game.board.lengthY,
+              } as React.CSSProperties
+            }
+          >
+            {cells?.map((item, index) => {
+              return (
+                <CellView
+                  key={index}
+                  pCell={item}
+                  clickCell={cellClick}
+                  changeState={changeState}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

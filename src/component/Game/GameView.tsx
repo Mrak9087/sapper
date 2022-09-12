@@ -7,7 +7,7 @@ import Modal from '../Modal';
 import './gameView.css';
 
 const GameView = () => {
-  const store = useSelector((state:RootStore) => state);
+  const store = useSelector((state: RootStore) => state);
   const [game, setGame] = useState<Game>();
   const [isWin, setIsWin] = useState<boolean>(false);
   const [isLose, setIsLose] = useState<boolean>(false);
@@ -17,8 +17,10 @@ const GameView = () => {
   }, [store.countBomb]);
 
   const newGame = () => {
+    setGame(undefined);
+    setIsLose(false);
+    setIsWin(false);
     const locGame = new Game(store.lengthX, store.lengthY, store.countBomb);
-    locGame.init();
     setGame(locGame);
   };
 
@@ -31,8 +33,6 @@ const GameView = () => {
   };
 
   const closeModal = () => {
-    setIsLose(false);
-    setIsWin(false);
     newGame();
   };
 
@@ -48,7 +48,16 @@ const GameView = () => {
 
   return (
     <div className="gameView">
-      {game ? <BoardView boardWidth={store.widthBoard} propGame={game} handleWin={handleWin} handleLose={handleLose} /> : <></>}
+      {game ? (
+        <BoardView
+          boardWidth={store.widthBoard}
+          propGame={game}
+          handleWin={handleWin}
+          handleLose={handleLose}
+        />
+      ) : (
+        <></>
+      )}
       <Modal isShow={isWin || isLose} close={closeModal} text={getTextModal()} />
     </div>
   );
