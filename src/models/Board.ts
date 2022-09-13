@@ -34,11 +34,14 @@ class Board {
     while (locCountBomb < this.countBomb) {
       let x = Math.floor(Math.random() * this.lengthX);
       let y = Math.floor(Math.random() * this.lengthY);
-      if (this.board[y][x] !== BOMB) {
-        this.board[y][x] = BOMB;
-        this.incCountBomb(x, y);
-        locCountBomb++;
+      if (x || y) {
+        if (this.board[y][x] !== BOMB) {
+          this.board[y][x] = BOMB;
+          this.incCountBomb(x, y);
+          locCountBomb++;
+        }
       }
+      
     }
   }
 
